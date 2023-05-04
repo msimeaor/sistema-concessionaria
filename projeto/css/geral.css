@@ -1,0 +1,21 @@
+@media (max-width: 768px) {
+  .container-corpo {
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100vw;
+  }
+}
+
+.botao {
+  align-self: stretch;
+  border-radius: 5px;
+}
+
+.botao:hover {
+  cursor: pointer;
+}
+
+.lista-dados-cliente li {
+  display: flex;
+  justify-content: space-between;
+}

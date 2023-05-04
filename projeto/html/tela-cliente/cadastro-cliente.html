@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados Pessoais</title>
+
+  <link rel="stylesheet" href="/projeto/css/bootstrap.css">
+  <link rel="stylesheet" href="/projeto/css/geral.css">
+
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <div class="container-fluid container-header">
+    <div class="row bg-primary text-light py-sm-4 py-2">
+      <div class="col">
+        <h1 class="h1">Cadastro Clientes</h1>
+      </div>
+    </div>
+
+    <div class="row bg-light pt-sm-4 pt-2">
+      <div class="col">
+        <ul class="nav nav-tabs" id="navigator" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="tab-dadosPessoais" data-toggle="tab" href="#dados-pessoais" role="tab" aria-controls="tab-dadosPessoais" aria-selected="true">Dados Pessoais</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab-consultaClientes" data-toggle="tab" href="#consulta-clientes" role="tab" aria-controls="tab-consultaClientes" aria-selected="false">Consultar Clientes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPO -->
+  <div class="container-fluid py-5 px-0">
+    <div class="tab-content" id="conteudo-navigator">
+      <!-- CONTEUDO DADOS PESSOAIS -->
+      <div class="tab-pane fade" id="dados-pessoais" role="tabpanel" aria-labelledby="tab-dadosClientes">
+        <div class="container container-corpo pb-sm-5 pb-3">
+          <form>
+            <div class="row">
+              <div class="col-sm-4 col">
+                <div class="form-group">
+                  <label for="codigo">Codigo</label>
+                  <input type="text" id="codigo" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col">
+                <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input type="text" id="nome" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-10 col-12">
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="celular">Celular</label>
+                  <input type="tel" id="celular" class="form-control" placeholder="00 00 00000-0000">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="tel-fixo">Telefone Fixo</label>
+                  <input type="tel" id="tel-fixo" class="form-control" placeholder="00 00 0000-0000">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-10 col-12">
+                <div class="form-group">
+                  <label for="endereco">Endereço</label>
+                  <input type="text" id="endereco" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="cep">CEP</label>
+                  <input type="text" id="cep" class="form-control" placeholder="00000-000">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="numero">Nº</label>
+                  <input type="number" id="numero" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-6 pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="bairro">Bairro</label>
+                  <input type="text" id="bairro" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 px-lg-3 px-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="cidade">Cidade</label>
+                  <input type="text" id="cidade" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 px-lg-3 px-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="complemento">Complemento</label>
+                  <input type="text" id="complemento" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select id="estado" class="custom-select">
+                    <option selected>Selecione</option>
+                    <option value="acre">AC</option>
+                    <option value="alagoas">AL</option>
+                    <option value="amapa">AP</option>
+                    <option value="amazonas">AM</option>
+                    <option value="bahia">BA</option>
+                    <option value="ceara">CE</option>
+                    <option value="distrito federal">DF</option>
+                    <option value="espirito santo">ES</option>
+                    <option value="goias">GO</option>
+                    <option value="maranhao">MA</option>
+                    <option value="mato grosso">MT</option>
+                    <option value="mato grosso do sul">MS</option>
+                    <option value="minas gerais">MG</option>
+                    <option value="para">PA</option>
+                    <option value="paraiba">PB</option>
+                    <option value="parana">PR</option>
+                    <option value="pernambuco">PE</option>
+                    <option value="piaui">PI</option>
+                    <option value="rio de janeiro">RJ</option>
+                    <option value="rio grande do norte">RN</option>
+                    <option value="rio grande do sul">RS</option>
+                    <option value="rondonia">RO</option>
+                    <option value="roraima">RR</option>
+                    <option value="santa catarina">SC</option>
+                    <option value="sao paulo">SP</option>
+                    <option value="sergipe">SE</option>
+                    <option value="tocantins">TO</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col px-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="rg">RG</label>
+                  <input type="text" id="rg" class="form-control" placeholder="0.000.000">
+                </div>
+              </div>
+              <div class="col-sm-4 col-6 px-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input type="text" id="cpf" class="form-control" placeholder="000.000.000-00">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-clientes">
+            <button type="button" class="btn btn-lg btn-outline-primary mr-2 btn-salvar-dados-pessoais">SALVAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-dados-pessoais">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-excluir-dados-pessoais">EXCLUIR</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEUDO CONSULTAR CLIENTES -->
+      <div class="tab-pane fade show active" id="consulta-clientes" role="tabpanel" aria-labelledby="tab-consulta-clientes">
+        <div class="container pb-sm-5 pb-3 mb-3">
+          <form>
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-group form-inline justify-content-center">
+                  <label for="cpf-busca" class="mr-3">CPF</label>
+                  <input type="text" id="cpf-busca" class="form-control w-50 mr-3">
+                  <button class="d-block btn-primary px-3 botao btn-buscar-cliente">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group lista-dados-cliente">
+                <li class="list-group-item font-weight-bold text-primary">Código: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Nome: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">RG: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">E-mail: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Telefone: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Celular: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">CEP: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Endereço: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Número: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Complemento: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Bairro: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">Cidade: <span class="font-weight-normal text-dark"></span></li>
+                <li class="list-group-item font-weight-bold text-primary">UF: <span class="font-weight-normal text-dark"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-clientes">
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-buscar-cliente">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-excluir-buscar-cliente">EXCLUIR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/projeto/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="/projeto/js/popper.min.js"></script>
+  <script src="/projeto/js/bootstrap.js"></script>
+
+</body>
+</html>
