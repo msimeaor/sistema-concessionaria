@@ -35,9 +35,17 @@ export default class SalvaCliente {
       body: JSON.stringify(this.dadosCliente)
     })
 
-    .then(response => response.json())
+    .then(response => {
+      if (response.status === 201) {
+        return response.json()
+      } else {
+        alert('Erro ao cadastrar o cliente')
+        return response.json()
+      }
+    })
+
     .then(cliente => {
-      console.log(cliente);
+      alert(`Cliente cadastrado com sucesso!`)
     })
     
     .catch(error => {
