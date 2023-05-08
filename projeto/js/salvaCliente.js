@@ -8,14 +8,16 @@ export default class SalvaCliente {
     this.init()
   }
 
-  adcEventoBotaoAction() {
-    this.botaoAction.addEventListener('click', this.handleBotaoAction)
-  }
-
   handleBotaoAction(event) {
     event.preventDefault()
     this.preencherObjetoDadosCliente()
-    this.fazerFetchAPI()
+
+    if (this.verificarInputsNulos()) {
+      alert('Com excessão de "complemento", todos os campos devem ser preenchidos')
+    } else {
+      this.fazerFetchAPI()
+    }
+    
   }
 
   preencherObjetoDadosCliente() {
@@ -24,6 +26,21 @@ export default class SalvaCliente {
       const valor = entrada.value
       this.dadosCliente[`${nome}`] = valor
     })
+  }
+
+  verificarInputsNulos() {
+    let arrayDadosCliente = []
+
+    for(let atr in this.dadosCliente) {
+      if (this.dadosCliente.hasOwnProperty(atr)) {
+        if (atr != 'complemento') {
+          const valor = this.dadosCliente[atr]
+          arrayDadosCliente.push(valor)
+        }
+      }
+    }
+
+    return arrayDadosCliente.some(valor => valor == false)
   }
 
   fazerFetchAPI() {
@@ -53,14 +70,9 @@ export default class SalvaCliente {
     })
   }
 
-  fazerBindDosEventos() {
-    this.handleBotaoAction = this.handleBotaoAction.bind(this)
-  }
-
   init() {
     if (this.entradasFormulario.length && this.urlAPI && this.botaoAction) {
-      this.fazerBindDosEventos()
-      this.adcEventoBotaoAction()
+      this.botaoAction.addEventListener('click', this.handleBotaoAction.bind(this))
     } else {
       console.log('Erro ao carregar o arquivo salvaCliente.js');
     }
