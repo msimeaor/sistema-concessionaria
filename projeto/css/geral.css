@@ -19,3 +19,27 @@
   display: flex;
   justify-content: space-between;
 }
+
+label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-valido {
+  border-color: #0C0;
+}
+
+.input-invalido {
+  border-color: #D00;
+}
+
+.label-valido::after {
+  content: '';
+}
+
+.label-invalido::after {
+  display: block;
+  content: 'valor inválido';
+  margin-right: 5px;
+  color: #D00;
+}
