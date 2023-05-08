@@ -1,3 +1,5 @@
+import BuscaCep from './buscaCep.js'
+
 export default class ValidaFormulario {
   constructor(formulario) {
     this.formulario = document.querySelector(formulario)
@@ -15,6 +17,11 @@ export default class ValidaFormulario {
   }
 
   handleChange(event) {
+
+    if (event.target.name === 'cep') {
+      const buscaCep = new BuscaCep(this.formulario)
+    }
+
     switch(event.target.name) {
       case 'email':
         this.validarRegex(event, 'email', this.todosRegex.email)
