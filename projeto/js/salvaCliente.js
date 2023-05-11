@@ -1,6 +1,7 @@
 export default class SalvaCliente {
-  constructor(entradasFormulario, urlAPI, botaoAction) {
+  constructor(entradasFormulario, inputCodigo, botaoAction, urlAPI) {
     this.urlAPI = urlAPI
+    this.inputCodigo = document.querySelector(inputCodigo)
     this.entradasFormulario = document.querySelectorAll(entradasFormulario)
     this.botaoAction = document.querySelector(botaoAction)
     this.dadosCliente = {}
@@ -63,10 +64,26 @@ export default class SalvaCliente {
 
     .then(cliente => {
       alert(`Cliente cadastrado com sucesso!`)
+      this.limparFormulario()
+      this.resetarFormatacoesInputELabel()
     })
     
     .catch(error => {
       console.log(error);
+    })
+  }
+
+  limparFormulario() {
+    this.entradasFormulario.forEach(entrada => {
+      entrada.value = ''
+    })
+    this.inputCodigo.value = ''
+  }
+
+  resetarFormatacoesInputELabel() {
+    this.entradasFormulario.forEach(entrada => {
+      entrada.classList.remove('input-valido')
+      entrada.previousElementSibling.classList.remove('label-valido')
     })
   }
 
