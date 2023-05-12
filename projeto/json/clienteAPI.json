@@ -1,4 +1,5 @@
 {
   "save": "http://localhost:8080/cliente",
-  "getByCpf": "http://localhost:8080/cliente/cpf"
+  "getByCpf": "http://localhost:8080/cliente/cpf",
+  "update": "http://localhost:8080/cliente/id"
 }
