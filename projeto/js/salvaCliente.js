@@ -1,9 +1,9 @@
 export default class SalvaCliente {
-  constructor(entradasFormulario, inputCodigo, botaoAction, urlAPI) {
+  constructor(urlAPI) {
     this.urlAPI = urlAPI
-    this.inputCodigo = document.querySelector(inputCodigo)
-    this.entradasFormulario = document.querySelectorAll(entradasFormulario)
-    this.botaoAction = document.querySelector(botaoAction)
+    this.inputCodigo = document.querySelector('[data-form="cadastro-cliente"] .id-cliente')
+    this.entradasFormulario = document.querySelectorAll('[data-form="cadastro-cliente"] .data-container')
+    this.botaoAction = document.querySelector('.btn-salvar-dados-pessoais')
     this.dadosCliente = {}
 
     this.init()

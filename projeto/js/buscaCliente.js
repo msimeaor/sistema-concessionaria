@@ -1,10 +1,10 @@
 export default class BuscaCliente {
-  constructor(inputCPF, listaDados, btnBuscar, urlAPI) {
-    this.inputCPF = document.querySelector(inputCPF)
-    this.listaDados = document.querySelector(listaDados)
+  constructor(urlAPI) {
+    this.inputCPF = document.querySelector('[data-form="busca-cliente"] #cpf-busca')
+    this.listaDados = document.querySelector('.lista-dados-cliente')
     this.listaDadosChaves = this.listaDados.querySelectorAll('.chaves')
     this.listaDadosValores = this.listaDados.querySelectorAll('.valores')
-    this.btnBuscar = document.querySelector(btnBuscar)
+    this.btnBuscar = document.querySelector('[data-form="busca-cliente"] .btn-buscar-cliente')
     this.urlAPI = urlAPI
 
     this.init()

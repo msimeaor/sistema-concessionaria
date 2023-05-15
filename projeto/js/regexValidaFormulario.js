@@ -2,7 +2,7 @@ import BuscaCep from './buscaCep.js'
 
 export default class ValidaFormulario {
   constructor(formulario) {
-    this.formulario = document.querySelector(formulario)
+    this.formulario = document.querySelector('[data-form="cadastro-cliente"]')
 
     this.todosRegex = {
       email: /([\w-.]+)@([\w-.]+)/gi,
