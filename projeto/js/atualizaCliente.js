@@ -63,6 +63,8 @@ class PreencheFormAtualizaCliente {
     this.urlAPIUpdate = urlAPIUpdate
     this.telaBuscaCliente = document.querySelector('.tela-busca-cliente')
     this.telaCadastroCliente = document.querySelector('.tela-cadastro-cliente')
+    this.linkCadastroCliente = document.querySelector('.link-cadastro-cliente')
+    this.linkBuscaCliente = document.querySelector('.link-busca-cliente')
     this.btnEditarCadastro = document.querySelector('.btn-editar-dados-pessoais')
     this.formCadastro = document.querySelector('[data-form="cadastro-cliente"]')
     this.inputsFormCadastro = this.formCadastro.querySelectorAll('.data-container')
@@ -75,7 +77,10 @@ class PreencheFormAtualizaCliente {
 
   alterarTelaAtiva() {
     this.telaBuscaCliente.classList.remove('show', 'active')
+    this.linkBuscaCliente.classList.remove('active')
+
     this.telaCadastroCliente.classList.add('show', 'active')
+    this.linkCadastroCliente.classList.add('active')
   }
 
   preencherFormularioCadastro() {
