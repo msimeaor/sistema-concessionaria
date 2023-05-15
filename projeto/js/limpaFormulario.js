@@ -1,4 +1,4 @@
-export default class LimparFormulario {
+export default class LimpaFormulario {
   constructor() {
     this.entradasFormulario = document.querySelectorAll('[data-form="cadastro-cliente"] .data-container')
     this.codigoFormulario = document.querySelector('.id-cliente')
