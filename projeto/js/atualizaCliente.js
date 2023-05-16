@@ -10,7 +10,7 @@ export default class AtualizaCliente {
 
   handleClick(event) {
     event.preventDefault()
-    this.criarObjCliente()
+    this.preencherObjCliente()
     
     if (this.verificarAtributoNuloObjCliente()) {
       alert('TODOS OS DADOS DO CLIENTE PRECISAM ESTAR PREENCHIDOS!')
@@ -20,7 +20,7 @@ export default class AtualizaCliente {
 
   }
 
-  criarObjCliente() {
+  preencherObjCliente() {
     this.listaDadosChaves.forEach(spanChave => {
       const textSpanChaveMinusculo = spanChave.innerText.toLowerCase()
       const valorChave = spanChave.nextElementSibling.innerText
@@ -48,7 +48,7 @@ export default class AtualizaCliente {
   }
 
   init() {
-    if (this.btnEditar && this.urlAPIUpdate) {
+    if (this.listaDadosChaves.length && this.btnEditar && this.urlAPIUpdate) {
       this.btnEditar.addEventListener('click', this.handleClick.bind(this))
     } else {
       console.log('Erro ao carregar atualizaCliente.js');
@@ -60,49 +60,46 @@ class PreencheFormAtualizaCliente {
   constructor(objCliente, urlAPIUpdate) {
     this.objCliente = objCliente
     this.urlAPIUpdate = urlAPIUpdate
-    this.telaBuscaCliente = document.querySelector('.tela-busca-cliente')
-    this.telaCadastroCliente = document.querySelector('.tela-cadastro-cliente')
-    this.linkCadastroCliente = document.querySelector('.link-cadastro-cliente')
-    this.linkBuscaCliente = document.querySelector('.link-busca-cliente')
+    this.telas = document.querySelectorAll('.tela')
+    this.linksNavegacao = document.querySelectorAll('.link-navegacao')
     this.btnEditarCadastro = document.querySelector('.btn-editar-dados-pessoais')
-    this.formCadastro = document.querySelector('[data-form="cadastro-cliente"]')
-    this.inputsFormCadastro = this.formCadastro.querySelectorAll('.data-container')
+    this.inputsFormCadastro = document.querySelectorAll('[data-form="cadastro-cliente"] .data-container')
     this.inputCodigo = document.querySelector('.id-cliente')
-    this.inputCpf = document.querySelector('#cpf-busca')
-    this.idCliente = this.objCliente['id']
+    this.inputCpfBuscaCliente = document.querySelector('#cpf-busca')
 
-    this.fazerFetchURLUpdateBound = this.fazerFetchURLUpdate.bind(this)
+    this.fazerFetchURLUpdate = this.fazerFetchURLUpdate.bind(this)
     this.init()
   }
 
   alterarTelaAtiva() {
-    this.telaBuscaCliente.classList.remove('show', 'active')
-    this.linkBuscaCliente.classList.remove('active')
-
-    this.telaCadastroCliente.classList.add('show', 'active')
-    this.linkCadastroCliente.classList.add('active')
+    this.telas.forEach(tela => {
+      tela.classList.toggle('active')
+      tela.classList.toggle('show')
+    })
+    
+    this.linksNavegacao.forEach(link => {
+      link.classList.toggle('active')
+    })
   }
 
   preencherFormularioCadastro() {
-    this.inputCodigo.value = this.idCliente
+    this.inputCodigo.value = this.objCliente['id']
     
     this.inputsFormCadastro.forEach(input => {
       const nomeInput = input.name
       if(nomeInput === 'cpf')
-        input.value = this.inputCpf.value
+        input.value = this.inputCpfBuscaCliente.value
       else
         input.value = this.objCliente[nomeInput]
     })
   }
 
-  // PREPARA O OBJETO CLIENTE QUE VAI SER PASSADO NO BODY DA FETCH
   removerIdEInserirCpfObjCliente() {
     delete this.objCliente.id
-    this.objCliente['cpf'] = this.inputCpf.value
+    this.objCliente['cpf'] = this.inputCpfBuscaCliente.value
   }
 
   atualizarObjCliente({target}) {
-    this.objCliente[target.name] = target.value
     setTimeout(() =>{
       this.inputsFormCadastro.forEach(input => {
         this.objCliente[input.name] = input.value
@@ -121,6 +118,7 @@ class PreencheFormAtualizaCliente {
       },
       body: JSON.stringify(this.objCliente)
     })
+
     .then(response => {
       if (response.status === 404) {
         alert('CLIENTE NÃO ENCONTRADO')
@@ -130,9 +128,11 @@ class PreencheFormAtualizaCliente {
         return response.json()
       }
     })
+
     .then(cliente => console.log(cliente))
+    
     .finally(() => {
-      this.btnEditarCadastro.removeEventListener('click', this.fazerFetchURLUpdateBound)
+      this.btnEditarCadastro.removeEventListener('click', this.fazerFetchURLUpdate)
     })
   }
 
@@ -144,7 +144,9 @@ class PreencheFormAtualizaCliente {
     this.alterarTelaAtiva()
     this.preencherFormularioCadastro()
     this.removerIdEInserirCpfObjCliente()
-    this.formCadastro.addEventListener('change', this.atualizarObjCliente.bind(this))
-    this.btnEditarCadastro.addEventListener('click', this.fazerFetchURLUpdateBound)
+    this.inputsFormCadastro.forEach(input => {
+      input.addEventListener('change', this.atualizarObjCliente.bind(this))
+    })
+    this.btnEditarCadastro.addEventListener('click', this.fazerFetchURLUpdate)
   }
 }
