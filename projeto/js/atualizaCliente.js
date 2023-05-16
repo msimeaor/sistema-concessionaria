@@ -103,6 +103,12 @@ class PreencheFormAtualizaCliente {
 
   atualizarObjCliente({target}) {
     this.objCliente[target.name] = target.value
+
+    setTimeout(() => {
+      this.inputsFormCadastro.forEach(input => {
+        this.objCliente[input.name] = input.value
+      })
+    }, 100)
   }
 
   fazerFetchURLUpdate(event) {

@@ -17,7 +17,6 @@ export default class DeletaCliente {
 
   atualizarURLFetch(valorIdCliente) {
     this.urlFetchAPI = this.urlFetchAPI.replace(/\/[^/]+$/g, '/' + valorIdCliente)
-    console.log(this.urlFetchAPI);
   }
 
   fazerFetchURLDelete() {
