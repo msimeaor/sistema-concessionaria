@@ -1,7 +1,6 @@
 export default class AtualizaCliente {
   constructor(urlAPIUpdate) {
-    this.listaDados = document.querySelector('.lista-dados-cliente')
-    this.listaDadosChaves = this.listaDados.querySelectorAll('.chaves')
+    this.listaDadosChaves = document.querySelectorAll('.lista-dados-cliente .chaves')
     this.btnEditar = document.querySelector('.btn-editar-buscar-cliente')
     this.urlAPIUpdate = urlAPIUpdate
     this.objCliente = {}
@@ -16,7 +15,7 @@ export default class AtualizaCliente {
     if (this.verificarAtributoNuloObjCliente()) {
       alert('TODOS OS DADOS DO CLIENTE PRECISAM ESTAR PREENCHIDOS!')
     } else {
-      const preencheFormAtualizaCliente = new PreencheFormAtualizaCliente(this.objCliente, this.urlAPIUpdate)
+      this.preencheFormAtualizaCliente = new PreencheFormAtualizaCliente(this.objCliente, this.urlAPIUpdate)
     }
 
   }
@@ -49,7 +48,7 @@ export default class AtualizaCliente {
   }
 
   init() {
-    if (this.listaDados && this.btnEditar && this.urlAPIUpdate) {
+    if (this.btnEditar && this.urlAPIUpdate) {
       this.btnEditar.addEventListener('click', this.handleClick.bind(this))
     } else {
       console.log('Erro ao carregar atualizaCliente.js');
@@ -72,6 +71,7 @@ class PreencheFormAtualizaCliente {
     this.inputCpf = document.querySelector('#cpf-busca')
     this.idCliente = this.objCliente['id']
 
+    this.fazerFetchURLUpdateBound = this.fazerFetchURLUpdate.bind(this)
     this.init()
   }
 
@@ -103,8 +103,7 @@ class PreencheFormAtualizaCliente {
 
   atualizarObjCliente({target}) {
     this.objCliente[target.name] = target.value
-
-    setTimeout(() => {
+    setTimeout(() =>{
       this.inputsFormCadastro.forEach(input => {
         this.objCliente[input.name] = input.value
       })
@@ -132,6 +131,9 @@ class PreencheFormAtualizaCliente {
       }
     })
     .then(cliente => console.log(cliente))
+    .finally(() => {
+      this.btnEditarCadastro.removeEventListener('click', this.fazerFetchURLUpdateBound)
+    })
   }
 
   atualizarURLAPIUpdate() {
@@ -143,6 +145,6 @@ class PreencheFormAtualizaCliente {
     this.preencherFormularioCadastro()
     this.removerIdEInserirCpfObjCliente()
     this.formCadastro.addEventListener('change', this.atualizarObjCliente.bind(this))
-    this.btnEditarCadastro.addEventListener('click', this.fazerFetchURLUpdate.bind(this))
+    this.btnEditarCadastro.addEventListener('click', this.fazerFetchURLUpdateBound)
   }
 }
