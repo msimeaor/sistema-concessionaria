@@ -15,6 +15,9 @@ export default class LimpaFormulario {
       } else {
         entrada.value = ''
       }
+
+      entrada.classList.remove('input-valido')
+      entrada.previousElementSibling.classList.remove('label-valido')
     })
   }
 
