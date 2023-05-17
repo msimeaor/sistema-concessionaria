@@ -1,5 +1,7 @@
 import SalvaFuncionario from "./jsFuncionario/salvaFuncionario.js";
 import ValidaFormulario from "./jsFuncionario/regexValidaFormularioFuncionario.js";
+import LimpaFormulario from "./jsFuncionario/limpaFormulario.js";
+
 
 function fazerFetchURLs(endp, Classe) {
   fetch('/projeto/json/FuncionarioAPI.json')
@@ -12,3 +14,4 @@ function fazerFetchURLs(endp, Classe) {
 
 fazerFetchURLs('save', SalvaFuncionario)
 const validaFormulario = new ValidaFormulario()
+const limpaFormulario = new LimpaFormulario()
