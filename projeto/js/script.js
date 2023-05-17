@@ -1,9 +1,9 @@
-import SalvaCliente from "./salvaCliente.js";
-import ValidaFormulario from "./regexValidaFormulario.js";
-import BuscaCliente from "./buscaCliente.js";
-import AtualizaCliente from "./atualizaCliente.js";
-import LimpaFormulario from "./limpaFormulario.js";
-import DeletaCliente from "./deletaCliente.js";
+import SalvaCliente from "./jsCliente/salvaCliente.js";
+import ValidaFormulario from "./jsCliente/regexValidaFormulario.js";
+import BuscaCliente from "./jsCliente/buscaCliente.js";
+import AtualizaCliente from "./jsCliente/atualizaCliente.js";
+import LimpaFormulario from "./jsCliente/limpaFormulario.js";
+import DeletaCliente from "./jsCliente/deletaCliente.js";
 
 function fazerFetchURLs(endp, Classe) {
   fetch('/projeto/json/clienteAPI.json')
