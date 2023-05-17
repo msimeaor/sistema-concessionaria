@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funcionário</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/geral.css">
+
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <div class="container-fluid container-header">
+    <div class="row bg-primary text-light py-sm-4 py-2">
+      <div class="col">
+        <h1 class="h1">Cadastro Funcionários</h1>
+      </div>
+    </div>
+
+    <div class="row bg-light pt-sm-4 pt-2">
+      <div class="col">
+        <ul class="nav nav-tabs" id="navigator" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active link-navegacao" id="tab-dadosPessoais" data-toggle="tab" href="#dados-pessoais" role="tab" aria-controls="tab-dadosPessoais" aria-selected="true">Dados Pessoais</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-navegacao" id="tab-consultaFuncionario" data-toggle="tab" href="#consulta-funcionario" role="tab" aria-controls="tab-consultaFuncionario" aria-selected="false">Consultar Funcionário</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPO -->
+  <div class="container-fluid py-5 px-0">
+    <div class="tab-content" id="conteudo-navigator">
+      <!-- CONTEUDO DADOS PESSOAIS -->
+      <div class="tab-pane fade tela" id="dados-pessoais" role="tabpanel" aria-labelledby="tab-dadosFuncionario">
+        <div class="container container-corpo pb-sm-5 pb-3">
+          <form data-form="cadastro-funcionario">
+            <div class="row">
+              <div class="col-sm-6 col">
+                <div class="form-group">
+                  <label for="codigo">Codigo</label>
+                  <input type="text" name="codigo" id="codigo" class="form-control id-funcionario" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col">
+                <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input type="text" name="nome" id="nome" class="form-control data-container">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-10 col-12">
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="email" name="email" id="email" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="celular">Celular</label>
+                  <input type="tel" name="celular" id="celular" class="form-control data-container" placeholder="Ex.: 5521900000000">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="tel-fixo">Telefone Fixo</label>
+                  <input type="tel" name="telefone" id="tel-fixo" class="form-control data-container" placeholder="Ex.: 552100000000">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-10 col-12">
+                <div class="form-group">
+                  <label for="endereco">Endereço</label>
+                  <input type="text" name="endereco" id="endereco" class="form-control data-container data-endereco">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="cep">CEP</label>
+                  <input type="text" name="cep" id="cep" class="form-control data-container data-endereco" placeholder="Ex.: 00000-000">
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-4 col pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="numero">Nº</label>
+                  <input type="number" name="numero" id="numero" class="form-control data-container" min="0">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-6 pr-lg-3 pr-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="bairro">Bairro</label>
+                  <input type="text" name="bairro" id="bairro" class="form-control data-container data-endereco">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 px-lg-3 px-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="cidade">Cidade</label>
+                  <input type="text" name="cidade" id="cidade" class="form-control data-container data-endereco">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 px-lg-3 px-md-1 pr-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="complemento">Complemento</label>
+                  <input type="text" name="complemento" id="complemento" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-3 col-6 pl-lg-3 pl-md-1 pl-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select id="estado" name="uf" class="custom-select data-container data-endereco">
+                    <option selected>Selecione</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col px-sm-3 pr-1">
+                <div class="form-group">
+                  <label for="rg">RG</label>
+                  <input type="text" name="rg" id="rg" class="form-control data-container" placeholder="Ex.: 0.000.000">
+                </div>
+              </div>
+              <div class="col-sm-4 col-6 px-sm-3 pl-1">
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input type="text" name="cpf" id="cpf" class="form-control data-container" placeholder="Ex.: 000.000.000-00">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 col-12">
+                <div class="form-group">
+                  <label for="cargo">Cargo</label>
+                  <input type="text" name="cargo" id="cargo" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-sm-5 col-12">
+                <div class="form-group">
+                  <label for="senha">Senha</label>
+                  <input type="password" name="senha" id="senha" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-sm-2 col-6">
+                <div class="form-group">
+                  <label for="acesso">Nivel de Acesso</label>
+                  <select name="acesso" id="acesso" class="form-control">
+                    <option value="selecionar">Selecionar</option>
+                    <option value="usuario">Usuário</option>
+                    <option value="administrador">Administrador</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-funcionario">
+            <button type="button" class="btn btn-lg btn-outline-primary mr-2 btn-salvar-dados-pessoais">SALVAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-dados-pessoais">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-limpar-dados-pessoais">LIMPAR</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEUDO CONSULTAR FUNCIONARIOS -->
+      <div class="tab-pane fade active show tela" id="consulta-funcionario" role="tabpanel" aria-labelledby="tab-consulta-funcionario">
+        <div class="container pb-sm-5 pb-3 mb-3">
+          <form data-form="busca-funcionario">
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-group form-inline justify-content-center">
+                  <label for="cpf-busca" class="mr-3">CPF</label>
+                  <input type="text" id="cpf-busca" class="form-control w-50 mr-3">
+                  <button class="d-block btn-primary px-3 botao btn-buscar-funcionario">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group lista-dados-funcionario">
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Id</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Nome</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">RG</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Email</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Telefone</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Celular</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">CEP</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Endereco</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Numero</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Complemento</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Bairro</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Cidade</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">UF</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Cargo</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Acesso</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Senha</span> <span class="font-weight-bold text-dark valores"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-funcionario">
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-buscar-funcionario">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-excluir-buscar-funcionario">EXCLUIR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+  <script src="./js/bootstrap/popper.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.js"></script>
+  <script src="./js/script.js" type="module"></script>
+
+</body>
+</html>
