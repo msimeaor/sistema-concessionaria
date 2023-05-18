@@ -98,7 +98,7 @@ export default class BuscaFuncionario {
       this.inputCPF.addEventListener('change', this.handleChange.bind(this))
       this.btnBuscar.addEventListener('click', this.handleClick.bind(this))
     } else {
-      console.log('Erro ao carregar buscaCliente.js');
+      console.log('Erro ao carregar buscaFuncionario.js');
     }
   }
 
