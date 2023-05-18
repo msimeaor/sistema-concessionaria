@@ -1,10 +1,10 @@
-export default class BuscaCliente {
+export default class BuscaFuncionario {
   constructor(urlAPI) {
-    this.inputCPF = document.querySelector('[data-form="busca-cliente"] #cpf-busca')
+    this.inputCPF = document.querySelector('[data-form="busca-funcionario"] #cpf-busca')
     this.listaDados = document.querySelector('.lista-dados')
     this.listaDadosChaves = this.listaDados.querySelectorAll('.chaves')
     this.listaDadosValores = this.listaDados.querySelectorAll('.valores')
-    this.btnBuscar = document.querySelector('[data-form="busca-cliente"] .btn-buscar-cliente')
+    this.btnBuscar = document.querySelector('[data-form="busca-funcionario"] .btn-buscar-funcionario')
     this.urlAPI = urlAPI
 
     this.init()
@@ -79,17 +79,17 @@ export default class BuscaCliente {
       }
     })
 
-    .then(cliente => {
-      this.preencherListaCliente(cliente)
+    .then(funcionario => {
+      this.preencherListaFuncionario(funcionario)
     })
 
   }
 
-  preencherListaCliente(cliente) {
+  preencherListaFuncionario(funcionario) {
     this.listaDadosChaves.forEach(spanChave => {
       const spanChaveMinusculo = spanChave.innerText.toLowerCase()
       const spanValor = spanChave.nextElementSibling
-      spanValor.innerText = cliente[spanChaveMinusculo]
+      spanValor.innerText = funcionario[spanChaveMinusculo]
     })
   }
 

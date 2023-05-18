@@ -1,6 +1,6 @@
 export default class AtualizaCliente {
   constructor(urlAPIUpdate) {
-    this.listaDadosChaves = document.querySelectorAll('.lista-dados-cliente .chaves')
+    this.listaDadosChaves = document.querySelectorAll('.lista-dados .chaves')
     this.btnEditar = document.querySelector('.btn-editar-buscar-cliente')
     this.urlAPIUpdate = urlAPIUpdate
     this.objCliente = {}

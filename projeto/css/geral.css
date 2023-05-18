@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.lista-dados-cliente li {
+.lista-dados li {
   display: flex;
   justify-content: space-between;
 }
