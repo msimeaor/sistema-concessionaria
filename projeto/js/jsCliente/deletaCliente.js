@@ -2,7 +2,7 @@ export default class DeletaCliente {
   constructor(urlFetchAPI) {
     this.urlFetchAPI = urlFetchAPI
     this.btnDeletar = document.querySelector('.btn-excluir-buscar-cliente')
-    this.listaDadosCliente = document.querySelector('.lista-dados-cliente')
+    this.listaDadosCliente = document.querySelector('.lista-dados')
     this.idListaDadosCliente = this.listaDadosCliente.querySelectorAll('.valores')[0]
 
     this.init()
