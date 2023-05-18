@@ -1,40 +1,40 @@
-export default class AtualizaCliente {
+export default class AtualizaFuncionario {
   constructor(urlAPIUpdate) {
     this.listaDadosChaves = document.querySelectorAll('.lista-dados .chaves')
-    this.btnEditar = document.querySelector('.btn-editar-buscar-cliente')
+    this.btnEditar = document.querySelector('.btn-editar-buscar-funcionario')
     this.urlAPIUpdate = urlAPIUpdate
-    this.objCliente = {}
+    this.objFuncionario = {}
 
     this.init()
   }
 
   handleClick(event) {
     event.preventDefault()
-    this.preencherObjCliente()
+    this.preencherObjFuncionario()
     
-    if (this.verificarAtributoNuloObjCliente()) {
-      alert('TODOS OS DADOS DO CLIENTE PRECISAM ESTAR PREENCHIDOS!')
+    if (this.verificarAtributoNuloObjFuncionario()) {
+      alert('TODOS OS DADOS DO FUNCIONARIO PRECISAM ESTAR PREENCHIDOS!')
     } else {
-      this.preencheFormAtualizaCliente = new PreencheFormAtualizaCliente(this.objCliente, this.urlAPIUpdate)
+      this.preencheFormAtualizaFuncionario = new PreencheFormAtualizaFuncionario(this.objFuncionario, this.urlAPIUpdate)
     }
 
   }
 
-  preencherObjCliente() {
+  preencherObjFuncionario() {
     this.listaDadosChaves.forEach(spanChave => {
       const textSpanChaveMinusculo = spanChave.innerText.toLowerCase()
       const valorChave = spanChave.nextElementSibling.innerText
-      this.objCliente[textSpanChaveMinusculo] = valorChave
+      this.objFuncionario[textSpanChaveMinusculo] = valorChave
     })
   }
 
-  verificarAtributoNuloObjCliente() {
+  verificarAtributoNuloObjFuncionario() {
     let valorNulo = []
 
-    for(let atr in this.objCliente) {
+    for(let atr in this.objFuncionario) {
       if (atr !== 'complemento') {
-        if (this.objCliente.hasOwnProperty(atr) && 
-            (this.objCliente[atr] !== '' && this.objCliente[atr] !== undefined && this.objCliente[atr] !== null)) {
+        if (this.objFuncionario.hasOwnProperty(atr) && 
+            (this.objFuncionario[atr] !== '' && this.objFuncionario[atr] !== undefined && this.objFuncionario[atr] !== null)) {
           valorNulo.push(false)
         } else {
           valorNulo.push(true)
@@ -51,21 +51,21 @@ export default class AtualizaCliente {
     if (this.listaDadosChaves.length && this.btnEditar && this.urlAPIUpdate) {
       this.btnEditar.addEventListener('click', this.handleClick.bind(this))
     } else {
-      console.log('Erro ao carregar atualizaCliente.js');
+      console.log('Erro ao carregar atualizaFuncionario.js');
     }
   }
 }
 
-class PreencheFormAtualizaCliente {
-  constructor(objCliente, urlAPIUpdate) {
-    this.objCliente = objCliente
+class PreencheFormAtualizaFuncionario {
+  constructor(objFuncionario, urlAPIUpdate) {
+    this.objFuncionario = objFuncionario
     this.urlAPIUpdate = urlAPIUpdate
     this.telas = document.querySelectorAll('.tela')
     this.linksNavegacao = document.querySelectorAll('.link-navegacao')
     this.btnEditarCadastro = document.querySelector('.btn-editar-dados-pessoais')
-    this.inputsFormCadastro = document.querySelectorAll('[data-form="cadastro-cliente"] .data-container')
-    this.inputCodigo = document.querySelector('.id-cliente')
-    this.inputCpfBuscaCliente = document.querySelector('#cpf-busca')
+    this.inputsFormCadastro = document.querySelectorAll('[data-form="cadastro-funcionario"] .data-container')
+    this.inputCodigo = document.querySelector('.id-funcionario')
+    this.inputCpfBuscaFuncionario = document.querySelector('#cpf-busca')
 
     this.fazerFetchURLUpdate = this.fazerFetchURLUpdate.bind(this)
     this.init()
@@ -83,26 +83,26 @@ class PreencheFormAtualizaCliente {
   }
 
   preencherFormularioCadastro() {
-    this.inputCodigo.value = this.objCliente['id']
+    this.inputCodigo.value = this.objFuncionario['id']
     
     this.inputsFormCadastro.forEach(input => {
       const nomeInput = input.name
       if(nomeInput === 'cpf')
-        input.value = this.inputCpfBuscaCliente.value
+        input.value = this.inputCpfBuscaFuncionario.value
       else
-        input.value = this.objCliente[nomeInput]
+        input.value = this.objFuncionario[nomeInput]
     })
   }
 
-  removerIdEInserirCpfObjCliente() {
-    delete this.objCliente.id
-    this.objCliente['cpf'] = this.inputCpfBuscaCliente.value
+  removerIdEInserirCpfObjFuncionario() {
+    delete this.objFuncionario.id
+    this.objFuncionario['cpf'] = this.inputCpfBuscaFuncionario.value
   }
 
-  atualizarObjCliente({target}) {
+  atualizarObjFuncionario({target}) {
     setTimeout(() =>{
       this.inputsFormCadastro.forEach(input => {
-        this.objCliente[input.name] = input.value
+        this.objFuncionario[input.name] = input.value
       })
     }, 1000)
   }
@@ -116,20 +116,20 @@ class PreencheFormAtualizaCliente {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.objCliente)
+      body: JSON.stringify(this.objFuncionario)
     })
 
     .then(response => {
       if (response.status === 404) {
-        alert('CLIENTE NÃO ENCONTRADO')
+        alert('FUNCIONARIO NÃO ENCONTRADO')
         return response.json()
       } else {
-        alert('CLIENTE ATUALIZADO COM SUCESSO')
+        alert('FUNCIONARIO ATUALIZADO COM SUCESSO')
         return response.json()
       }
     })
 
-    .then(cliente => console.log(cliente))
+    .then(funcionario => console.log(funcionario))
     
     .finally(() => {
       this.btnEditarCadastro.removeEventListener('click', this.fazerFetchURLUpdate)
@@ -143,9 +143,9 @@ class PreencheFormAtualizaCliente {
   init() {
     this.alterarTelaAtiva()
     this.preencherFormularioCadastro()
-    this.removerIdEInserirCpfObjCliente()
+    this.removerIdEInserirCpfObjFuncionario()
     this.inputsFormCadastro.forEach(input => {
-      input.addEventListener('change', this.atualizarObjCliente.bind(this))
+      input.addEventListener('change', this.atualizarObjFuncionario.bind(this))
     })
     this.btnEditarCadastro.addEventListener('click', this.fazerFetchURLUpdate)
   }

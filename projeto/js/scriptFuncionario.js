@@ -1,5 +1,6 @@
 import SalvaFuncionario from "./jsFuncionario/salvaFuncionario.js";
 import BuscaFuncionario from "./jsFuncionario/buscaFuncionario.js";
+import AtualizaFuncionario from "./jsFuncionario/atualizaFuncionario.js";
 import ValidaFormulario from "./jsFuncionario/regexValidaFormularioFuncionario.js";
 import LimpaFormulario from "./jsFuncionario/limpaFormulario.js";
 
@@ -15,5 +16,6 @@ function fazerFetchURLs(endp, Classe) {
 
 fazerFetchURLs('save', SalvaFuncionario)
 fazerFetchURLs('getByCpf', BuscaFuncionario)
+fazerFetchURLs('update', AtualizaFuncionario)
 const validaFormulario = new ValidaFormulario()
 const limpaFormulario = new LimpaFormulario()
