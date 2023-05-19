@@ -1,5 +1,6 @@
 {
   "save": "http://localhost:8080/funcionario",
   "getByCpf": "http://localhost:8080/funcionario/cpf",
-  "update": "http://localhost:8080/funcionario/id"
+  "update": "http://localhost:8080/funcionario/id",
+  "delete": "http://localhost:8080/funcionario/id"
 }
