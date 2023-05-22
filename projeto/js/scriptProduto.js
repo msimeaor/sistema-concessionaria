@@ -1,4 +1,5 @@
 import SalvaProduto from "./jsProduto/salvaProduto.js"
+import LimpaFormulario from "./jsProduto/limpaFormulario.js"
 
 function fazerFetchURLs(endp, Classe) {
   fetch('/projeto/json/produtoAPI.json')
@@ -9,4 +10,5 @@ function fazerFetchURLs(endp, Classe) {
     })
 }
 
+const limpaFormulario = new LimpaFormulario()
 fazerFetchURLs('save', SalvaProduto)
