@@ -1,3 +1,4 @@
 {
-  "save": "http://localhost:8080/produto"
+  "save": "http://localhost:8080/produto",
+  "getByChassi": "http://localhost:8080/produto/chassi"
 }
