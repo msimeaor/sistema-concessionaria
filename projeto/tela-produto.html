@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/geral.css">
+
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <div class="container-fluid container-header">
+    <div class="row bg-primary text-light py-sm-4 py-2">
+      <div class="col">
+        <h1 class="h1">Cadastro Produtos</h1>
+      </div>
+    </div>
+
+    <div class="row bg-light pt-sm-4 pt-2">
+      <div class="col">
+        <ul class="nav nav-tabs" id="navigator" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active link-navegacao" id="tab-dadosProduto" data-toggle="tab" href="#dados-produto" role="tab" aria-controls="tab-dadosProduto" aria-selected="true">Dados Produto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-navegacao" id="tab-consultaProduto" data-toggle="tab" href="#consulta-produto" role="tab" aria-controls="tab-consultaProduto" aria-selected="false">Consultar Produto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPO -->
+  <div class="container-fluid py-5 px-0">
+    <div class="tab-content" id="conteudo-navigator">
+      <!-- CONTEUDO DADOS PRODUTO -->
+      <div class="tab-pane fade active show tela" id="dados-produto" role="tabpanel" aria-labelledby="tab-dadosProduto">
+        <div class="container container-corpo pb-sm-5 pb-3">
+          <form data-form="cadastro-produto">
+            <div class="row">
+              <div class="col-md-4 col-8">
+                <div class="form-group">
+                  <label for="id">Código</label>
+                  <input type="text" name="id" id="id" readonly class="form-control id-produto">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="marca">Marca</label>
+                  <input type="text" name="marca" id="marca" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="modelo">Modelo</label>
+                  <input type="text" name="modelo" id="modelo" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="cor">Cor</label>
+                  <input type="text" name="cor" id="cor" class="form-control data-container">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="placa">Placa</label>
+                  <input type="text" name="placa" id="placa" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="chassi">Chassi</label>
+                  <input type="text" name="chassi" id="chassi" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-5 col-8">
+                <div class="form-group">
+                  <label for="motor">Motor</label>
+                  <input type="text" name="motor" id="motor" class="form-control data-container">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="kilometragem">Kilometragem</label>
+                  <input type="text" name="kilometragem" id="kilometragem" class="form-control data-container">
+                </div>
+              </div>
+              <div class="col-sm-4 col-6">
+                <div class="form-group">
+                  <label for="estoque">Estoque</label>
+                  <input type="number" name="estoque" id="estoque" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-8">
+                <div class="form-group">
+                  <label for="preco">Preço</label>
+                  <input type="text" name="preco" id="preco" class="form-control data-container" placeholder="R$00000.00">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-produto">
+            <button type="button" class="btn btn-lg btn-outline-primary mr-2 btn-salvar-dados-produto">SALVAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-dados-produto">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-limpar-dados-produto">LIMPAR</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTEUDO CONSULTAR PRODUTOS -->
+      <div class="tab-pane fade tela" id="consulta-produto" role="tabpanel" aria-labelledby="tab-consulta-produto">
+        <div class="container pb-sm-5 pb-3 mb-3">
+          <form data-form="busca-produto">
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-group form-inline justify-content-center">
+                  <label for="chassi-busca" class="mr-3">Chassi</label>
+                  <input type="text" id="chassi-busca" class="form-control w-50 mr-3">
+                  <button class="d-block btn-primary px-3 botao btn-buscar-produto">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group lista-dados">
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Id</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Marca</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Modelo</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Ano</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Cor</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Placa</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Chassi</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Motor</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Kilometragem</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Estoque</span> <span class="font-weight-bold text-dark valores"></span></li>
+                <li class="list-group-item font-weight-bold text-primary"><span class="chaves">Preco</span> <span class="font-weight-bold text-dark valores"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- BOTOES AÇOES -->
+        <div class="container-fluid text-center">
+          <div class="btn-group" role="group" aria-label="btns-opcoes-produto">
+            <button type="button" class="btn btn-lg btn-outline-primary btn-editar-buscar-produto">EDITAR</button>
+            <button type="button" class="btn btn-lg btn-outline-primary ml-2 btn-excluir-buscar-produto">EXCLUIR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+  <script src="./js/bootstrap/popper.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.js"></script>
+  <script src="./js/scriptProduto.js" type="module"></script>
+
+</body>
+</html>
