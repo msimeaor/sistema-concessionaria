@@ -1,7 +1,7 @@
 import BuscaCep from './buscaCep.js'
 
 export default class ValidaFormulario {
-  constructor(formulario) {
+  constructor() {
     this.formulario = document.querySelector('[data-form="cadastro-cliente"]')
 
     this.todosRegex = {

@@ -25,9 +25,24 @@ export default class SalvaProduto {
   preencherObjetoDadosProduto() {
     this.entradasFormulario.forEach(entrada => {
       const nome = entrada.name
-      const valor = entrada.value
+      let valor = entrada.value
+
+      if (nome === 'preco') {
+        valor = this.limparPreco(valor)
+      }
+
       this.dadosProduto[`${nome}`] = valor
     })
+  }
+
+  limparPreco(valor) {
+    const novoValor = valor
+      .replace('R$', '')
+      .replace('.', '')
+      .replace(',', '.')
+      .trim()
+
+    return novoValor
   }
 
   verificarInputsNulos() {
