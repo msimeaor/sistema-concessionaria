@@ -106,6 +106,7 @@ class PreencheFormAtualizaProduto {
   fazerFetchURLUpdate(event) {
     event.preventDefault()
     this.urlAPIUpdate = this.atualizarURLAPIUpdate()
+    this.formatarPrecoObjetoProduto()
 
     fetch(this.urlAPIUpdate, {
       method: 'PUT',
@@ -134,6 +135,14 @@ class PreencheFormAtualizaProduto {
 
   atualizarURLAPIUpdate() {
     return this.urlAPIUpdate.replace(/\/[^/]+$/g, '/' + this.inputCodigo.value)
+  }
+
+  formatarPrecoObjetoProduto() {
+    this.objProduto['preco'] = this.objProduto['preco']
+      .replace('R$', '')
+      .replace('.', '')
+      .replace(',', '.')
+      .trim()
   }
 
   init() {
