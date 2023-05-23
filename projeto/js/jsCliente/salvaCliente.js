@@ -57,13 +57,13 @@ export default class SalvaCliente {
       if (response.status === 201) {
         return response.json()
       } else {
-        alert('Erro ao cadastrar o cliente')
+        alert('JA EXISTEM CLIENTES CADASTRADOS COM ESTES DADOS!')
         return response.json()
       }
     })
 
     .then(cliente => {
-      alert(`Cliente cadastrado com sucesso!`)
+      alert(`CLIENTE CADASTRADO COM SUCESSO!`)
       this.limparFormulario()
       this.resetarFormatacoesInputELabel()
     })
