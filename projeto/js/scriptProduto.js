@@ -1,5 +1,6 @@
 import SalvaProduto from "./jsProduto/salvaProduto.js"
 import BuscaProduto from "./jsProduto/buscaProduto.js"
+import AtualizaProduto from "./jsProduto/atualizaProduto.js"
 import LimpaFormulario from "./jsProduto/limpaFormulario.js"
 
 function fazerFetchURLs(endp, Classe) {
@@ -14,3 +15,4 @@ function fazerFetchURLs(endp, Classe) {
 const limpaFormulario = new LimpaFormulario()
 fazerFetchURLs('save', SalvaProduto)
 fazerFetchURLs('getByChassi', BuscaProduto)
+fazerFetchURLs('update', AtualizaProduto)
