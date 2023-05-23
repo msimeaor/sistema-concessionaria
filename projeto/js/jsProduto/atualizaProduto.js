@@ -122,8 +122,8 @@ class PreencheFormAtualizaProduto {
       if (response.status === 404) {
         alert('PRODUTO NÃO ENCONTRADO!')
         return response.json()
-      } else { 
-        alert('PRODUTO ATUALIZADO COM SUCESSO');
+      } else {
+        alert('PRODUTO ATUALIZADO COM SUCESSO')
         return response.json()
       }
     })
