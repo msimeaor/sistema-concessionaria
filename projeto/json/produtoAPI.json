@@ -1,4 +1,5 @@
 {
   "save": "http://localhost:8080/produto",
-  "getByChassi": "http://localhost:8080/produto/chassi"
+  "getByChassi": "http://localhost:8080/produto/chassi",
+  "update": "http://localhost:8080/produto/id"
 }
