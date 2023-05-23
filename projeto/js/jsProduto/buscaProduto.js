@@ -52,8 +52,17 @@ export default class BuscaProduto {
     this.listaDadosChaves.forEach(spanChave => {
       const spanChaveMinusculo = spanChave.innerText.toLowerCase()
       const spanValor = spanChave.nextElementSibling
-      spanValor.innerText = produto[spanChaveMinusculo]
+
+      if (spanChaveMinusculo === 'preco')
+        spanValor.innerText = this.formatarPreco(produto[spanChaveMinusculo])
+      else
+        spanValor.innerText = produto[spanChaveMinusculo]
     })
+  }
+
+  formatarPreco(preco) {
+    const precoFloat = parseFloat(preco)
+    return precoFloat.toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
   }
 
   init() {

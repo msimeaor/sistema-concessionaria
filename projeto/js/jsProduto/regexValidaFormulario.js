@@ -63,6 +63,7 @@ export default class ValidaFormulario {
   formatarValorInput(target) {
     target.value = target.value
       .replace(this.todosRegex.placa, '$1$2')
+      .toUpperCase()
   }
 
   alterarClasseInvalido(target) {
