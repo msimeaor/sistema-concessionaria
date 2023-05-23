@@ -97,16 +97,18 @@ class PreencheFormAtualizaProduto {
     this.objProduto['chassi'] = this.inputChassiBuscaProduto.value
   }
 
-  atualizarObjProduto({target}) {
+  atualizarObjProduto() {
     this.inputsFormCadastro.forEach(input => {
-      this.objProduto[input.name] = input.value
+      setTimeout(() => {
+        this.objProduto[input.name] = input.value
+      }, 100)
     })
   }
 
   fazerFetchURLUpdate(event) {
     event.preventDefault()
     this.urlAPIUpdate = this.atualizarURLAPIUpdate()
-    this.formatarPrecoObjetoProduto()
+    this.formatarPreco()
 
     fetch(this.urlAPIUpdate, {
       method: 'PUT',
@@ -118,10 +120,10 @@ class PreencheFormAtualizaProduto {
 
     .then(response => {
       if (response.status === 404) {
-        alert('PRODUTO NÃO ENCONTRADO')
+        alert('PRODUTO NÃO ENCONTRADO!')
         return response.json()
-      } else {
-        alert('PRODUTO ATUALIZADO COM SUCESSO')
+      } else { 
+        alert('PRODUTO ATUALIZADO COM SUCESSO');
         return response.json()
       }
     })
@@ -137,12 +139,11 @@ class PreencheFormAtualizaProduto {
     return this.urlAPIUpdate.replace(/\/[^/]+$/g, '/' + this.inputCodigo.value)
   }
 
-  formatarPrecoObjetoProduto() {
-    this.objProduto['preco'] = this.objProduto['preco']
-      .replace('R$', '')
-      .replace('.', '')
-      .replace(',', '.')
-      .trim()
+  formatarPreco() {
+    this.objProduto['preco'] = +this.objProduto['preco']
+    .replace('R$', '')
+    .replace('.', '')
+    .replace(',', '.')
   }
 
   init() {

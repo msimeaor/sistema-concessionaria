@@ -53,9 +53,9 @@ export default class BuscaProduto {
       const spanChaveMinusculo = spanChave.innerText.toLowerCase()
       const spanValor = spanChave.nextElementSibling
 
-      if (spanChaveMinusculo === 'preco')
+      if (spanChaveMinusculo === 'preco') {
         spanValor.innerText = this.formatarPreco(produto[spanChaveMinusculo])
-      else
+      } else
         spanValor.innerText = produto[spanChaveMinusculo]
     })
   }

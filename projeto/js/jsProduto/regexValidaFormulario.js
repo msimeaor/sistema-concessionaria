@@ -12,7 +12,7 @@ export default class ValidaFormulario {
   handleChange(event) {
     switch(event.target.name) {
       case 'placa':
-        this.validarRegex(event, 'placa', this.todosRegex.placa)
+        this.validarRegex(event, this.todosRegex.placa)
         break
       case 'kilometragem':
         this.formatarNumero(event)
@@ -23,16 +23,22 @@ export default class ValidaFormulario {
     }
   }
 
-  validarRegex({target}, tipoDado, regex) {
-    const valorValido = target.value.match(regex)
+  validarRegex({target}, regex) {
 
-    if (valorValido && valorValido[0] === target.value) {
-      this.alterarClasseValido(target)
-      this.formatarClasseValido(target)
-      this.formatarValorInput(target)
+    if (target.value === '' || target.value == undefined || target.value == null) {
+      console.log('PLACA NÃO SETADA');
+    
     } else {
-      this.alterarClasseInvalido(target)
-      this.formatarValorInvalido(target)
+      const valorValido = target.value.match(regex)
+
+      if (valorValido && valorValido[0] === target.value) {
+        this.alterarClasseValido(target)
+        this.formatarClasseValido(target)
+        this.formatarValorInput(target)
+      } else {
+        this.alterarClasseInvalido(target)
+        this.formatarValorInvalido(target)
+      }
     }
   }
 
