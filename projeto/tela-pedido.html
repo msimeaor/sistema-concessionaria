@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido</title>
+
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/geral.css">
+
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <div class="container-fluid container-header">
+    <div class="row bg-primary text-light py-sm-4 py-2">
+      <div class="col">
+        <h1 class="h1">Ponto de Vendas</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPO DA PAGINA -->
+  <div class="container-fluid">
+    <div class="container-conteudo">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="card bg-light mt-5">
+            <div class="card-header font-weight-bold">DADOS DO CLIENTE</div>
+            <div class="card-body">
+              <div class="form-group form-inline flex-nowrap">
+                <label for="cpf" class="mr-2">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" style="min-width: 80px;">
+                <button type="button" class="btn btn-primary ml-2">Buscar</button>
+              </div>
+              <div class="form-group form-inline flex-nowrap">
+                <label for="id" class="mr-2">Código</label>
+                <input type="text" name="id" id="id" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="card bg-light my-5">
+            <div class="card-header font-weight-bold">DADOS DO PRODUTO</div>
+            <div class="card-body">
+              <div class="form-group form-inline flex-nowrap">
+                <label for="chassi" class="mr-2">Chassi</label>
+                <input type="text" name="chassi" id="chassi" class="form-control" style="min-width: 80px;">
+                <button type="button" class="btn btn-primary ml-2">Buscar</button>
+              </div>
+              <div class="form-group form-inline flex-nowrap">
+                <label for="produto" class="mr-2">Produto</label>
+                <input type="text" name="produto" id="produto" class="form-control">
+              </div>
+              <div class="form-group form-inline flex-nowrap">
+                <label for="preco" class="mr-2">Preco</label>
+                <input type="text" name="preco" id="preco" class="form-control">
+              </div>
+              <div class="form-group form-inline flex-nowrap">
+                <label for="qtd" class="mr-2">Quantidade</label>
+                <input type="number" name="qtd" id="qtd" class="form-control" min="0">
+              </div>
+              <div class="d-flex justify-content-center mt-4">
+                <button type="button" class="btn btn-outline-primary">Adicionar Item</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="card bg-light mt-sm-5 mt-0" style="min-height: 400px;">
+            <div class="card-header font-weight-bold">CARRINHO DE COMPRAS</div>
+            <div class="card-body">
+              <table class="table table-bordered table-responsive tabela-itens">
+                <thead class="bg-white">
+                  <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Qtd</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- ADICIONAR A LISTA DE PRODUTOS QUE VIER DA API -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card bg-light my-5">
+            <div class="card-header font-weight-bold">TOTAL DA VENDA</div>
+            <div class="card-body">
+              <div class="form-group form-inline flex-nowrap">
+                <label for="tot-venda" class="mr-2">Total da Venda</label>
+                <input type="text" name="tot-venda" id="tot-venda" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTOES PAGAMENTO/CANCELAR -->
+  <div class="container-fluid d-flex justify-content-center py-4">
+    <div class="btn-group" role="group" aria-label="Botões para finalizar compra ou cancelar">
+      <button type="button" class="btn-lg botao btn-outline-primary mr-2">Finalizar Pedido</button>
+      <button type="button" class="btn-lg botao btn-outline-primary ml-2">Cancelar Pedido</button>
+    </div>
+  </div>
+
+  <script src="./js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+  <script src="./js/bootstrap/popper.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.js"></script>
+  <script src="./js/scriptPedido.js" type="module"></script>
+
+</body>
+</html>
