@@ -1,8 +1,14 @@
 import BuscaClientePedido from "./jsPedido/buscaClientePedido.js";
+import BuscaProdutoPedido from "./jsPedido/buscaProdutoPedido.js";
 
-fetch('/projeto/json/clienteAPI.json')
-  .then(response => response.json())
-  .then(data => {
-    const {getByCpf} = data
-    const buscaClientePedido = new BuscaClientePedido(getByCpf)
-  })
+function fazerFetchURL(dir, metodoEndpoint, Classe) {
+  fetch(dir)
+    .then(response => response.json())
+    .then(data =>{
+      const endpoint = data[metodoEndpoint]
+      const classe = new Classe(endpoint)
+    })
+}
+
+fazerFetchURL('/projeto/json/clienteAPI.json', 'getByCpf', BuscaClientePedido)
+fazerFetchURL('/projeto/json/produtoAPI.json', 'getByChassi', BuscaProdutoPedido)
