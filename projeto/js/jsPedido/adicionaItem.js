@@ -16,7 +16,7 @@ export default class AdidionaItem {
   handleClick(event) {
     event.preventDefault()
     if (this.existemInputsNulos())
-      alert('PREENCHA TODOS OS CAMPOS!')
+      alert('EXISTEM CAMPOS INVALIDOS!')
     else {
       this.criarObjetoComOsValores()
       this.criarObjTabelaEPreencherTabela()
@@ -27,7 +27,7 @@ export default class AdidionaItem {
     if (this.inputChassi.value &&
         this.inputProduto.value &&
         this.inputPreco.value &&
-        this.inputQuantidade.value) {
+        (this.inputQuantidade.value > 0)) {
           
         return false
     } else
@@ -35,7 +35,6 @@ export default class AdidionaItem {
   }
 
   criarObjetoComOsValores() {
-    // LISTA DE OBJETOS QUE SERÁ PASSADA NO FETCH. ELE REPRESENTA LISTA DE ITENS PEDIDOS
     this.arrayItens.push({
       produto: this.inputProduto.value,
       preco: this.inputPreco.value,
@@ -83,6 +82,8 @@ export default class AdidionaItem {
 
     this.tbodyTabelaItens.appendChild(tr)
     this.limparDadosProduto()
+
+    const calculaPrecoVenda = new CalculaPrecoVenda(this.arrayItens)
   }
 
   limparDadosProduto() {
@@ -109,4 +110,41 @@ export default class AdidionaItem {
         console.log('Erro ao carregar adicionaItem.js');
   }
 
+}
+
+class CalculaPrecoVenda {
+  constructor(arrayItens) {
+    this.arrayItens = arrayItens
+    this.total = document.querySelector('#total')
+
+    this.init()
+  }
+
+  calcularPreco() {
+    let valorTotal = 0
+
+    if (Array.isArray(this.arrayItens)) {
+      this.arrayItens.forEach(objTabela => {
+        const precoFloat = this.formatarPreco(objTabela)
+        valorTotal += precoFloat
+        this.total.value = this.formatarEPreencherTotal(valorTotal)
+      })
+    }
+  }
+
+  formatarPreco(objTabela) {
+    return ((+objTabela['preco']
+      .replace('R$', '')
+      .replace('.', '')
+      .replace(',', '.')) * objTabela['quantidade']) 
+  }
+
+  formatarEPreencherTotal(valorTotal) {
+    const totalFloat = parseFloat(valorTotal)
+    return totalFloat.toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
+  }
+
+  init() {
+    this.calcularPreco()
+  }
 }
