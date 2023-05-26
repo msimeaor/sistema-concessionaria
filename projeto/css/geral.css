@@ -68,6 +68,7 @@ label {
 
 .tabela-itens::-webkit-scrollbar {
   height: 15px;
+  background: #fff;
 }
 
 .tabela-itens::-webkit-scrollbar-thumb {
@@ -82,6 +83,7 @@ label {
 
 .tabela-itens td {
   white-space: nowrap;
+  background: #fff;
 }
 
 .container-conteudo {

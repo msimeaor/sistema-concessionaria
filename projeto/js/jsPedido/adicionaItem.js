@@ -19,7 +19,7 @@ export default class AdidionaItem {
       alert('EXISTEM CAMPOS INVALIDOS!')
     else {
       this.criarObjetoComOsValores()
-      this.criarObjTabelaEPreencherTabela()
+      this.preencherTabela()
     }
   }
 
@@ -35,55 +35,51 @@ export default class AdidionaItem {
   }
 
   criarObjetoComOsValores() {
+    const precoFloat = this.formatarPreco(this.inputPreco.value)
+    const subtotal = precoFloat * this.inputQuantidade.value
+
     this.arrayItens.push({
       produto: this.inputProduto.value,
       preco: this.inputPreco.value,
-      quantidade: this.inputQuantidade.value
+      quantidade: this.inputQuantidade.value,
+      subtotal: subtotal
     })
   }
 
-  criarObjTabelaEPreencherTabela() {
-    const ultimaPosArray = this.arrayItens.length - 1
-    const subtotal = this.calcularSubtotal(ultimaPosArray)
-    
-    // OBJ QUE REPRESENTA OS CAMPOS DA TABELA.
-    const objTabela = {
-      produto: this.arrayItens[ultimaPosArray].produto,
-      quantidade: this.arrayItens[ultimaPosArray].quantidade,
-      preco: this.arrayItens[ultimaPosArray].preco,
-      subtotal: subtotal
-    }
-
-    this.preencherTabela(objTabela)
-  }
-
-  calcularSubtotal(ultimaPosArray) {
-    const precoLimpo = (this.arrayItens[ultimaPosArray].preco)
+  formatarPreco(stringPreco) {
+    return +stringPreco
       .replace('R$', '')
       .replace('.', '')
       .replace(',', '.')
-
-    const precoFloat = parseFloat(precoLimpo)
-    const subtotal = precoFloat * this.arrayItens[ultimaPosArray].quantidade
-    return subtotal.toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
   }
 
-  preencherTabela(objTabela) {
+  preencherTabela() {
     const tr = document.createElement('tr')
     const propriedades = ['produto', 'quantidade', 'preco', 'subtotal']
+    const ultimaPosArrayItens = this.arrayItens.length - 1
 
-    for(let i=0 ; i<4 ; i++) {
+    for(let i=0; i<4; i++) {
       const td = document.createElement('td')
       const propriedade = propriedades[i]
-      td.innerText = objTabela[propriedade]
 
+      if (propriedade === 'subtotal') {
+        const subtotal = this.formatarSubtotal(this.arrayItens[ultimaPosArrayItens][propriedade])
+        td.innerText = subtotal
+      } else {
+        td.innerText = this.arrayItens[ultimaPosArrayItens][propriedade]
+      } 
+      
       tr.appendChild(td)
     }
 
     this.tbodyTabelaItens.appendChild(tr)
+    const calcularPrecoVenda = new CalculaPrecoVenda(this.arrayItens)
     this.limparDadosProduto()
+  }
 
-    const calculaPrecoVenda = new CalculaPrecoVenda(this.arrayItens)
+  formatarSubtotal(subtotalFloat) {
+    return subtotalFloat
+      .toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
   }
 
   limparDadosProduto() {
@@ -124,19 +120,19 @@ class CalculaPrecoVenda {
     let valorTotal = 0
 
     if (Array.isArray(this.arrayItens)) {
-      this.arrayItens.forEach(objTabela => {
-        const precoFloat = this.formatarPreco(objTabela)
+      this.arrayItens.forEach(obj => {
+        const precoFloat = this.formatarPreco(obj)
         valorTotal += precoFloat
         this.total.value = this.formatarEPreencherTotal(valorTotal)
       })
     }
   }
 
-  formatarPreco(objTabela) {
-    return ((+objTabela['preco']
+  formatarPreco(obj) {
+    return ((+obj['preco']
       .replace('R$', '')
       .replace('.', '')
-      .replace(',', '.')) * objTabela['quantidade']) 
+      .replace(',', '.')) * obj['quantidade']) 
   }
 
   formatarEPreencherTotal(valorTotal) {
