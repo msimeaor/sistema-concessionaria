@@ -77,7 +77,11 @@ label {
 }
 
 .tabela-itens th {
-  min-width: 110px;
+  min-width: 135px;
+}
+
+.tabela-itens td {
+  white-space: nowrap;
 }
 
 .container-conteudo {

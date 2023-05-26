@@ -33,6 +33,7 @@ export default class BuscaProdutoPedido {
       .then(response => {
         if (response.status === 404) {
           alert('CHASSI NÃO ENCONTRADO!')
+          this.limparInputChassi()
           return response.json()
         } else
             return response.json()
@@ -42,8 +43,9 @@ export default class BuscaProdutoPedido {
       })
   }
 
-  adcEventos() {
-    this.btnBuscarChassi.addEventListener('click', this.handleClick)
+  limparInputChassi() {
+    this.inputChassi.value = ''
+    this.inputChassi.focus()
   }
 
   preencherDadosProduto(produto) {
@@ -55,6 +57,10 @@ export default class BuscaProdutoPedido {
     const precoFloat = parseFloat(preco)
     const precoFormatado = precoFloat.toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
     this.inputPrecoProduto.value = precoFormatado
+  }
+
+  adcEventos() {
+    this.btnBuscarChassi.addEventListener('click', this.handleClick)
   }
 
   init() {
