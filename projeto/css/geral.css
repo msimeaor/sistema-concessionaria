@@ -19,6 +19,10 @@ body {
     margin-right: 0px;
     max-width: 100vw;
   }
+
+  .lista-dados .valores {
+    text-align: left !important;
+  }
 }
 
 @media (max-width: 576px) {
@@ -40,6 +44,16 @@ body {
 .lista-dados li {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.lista-dados .chaves {
+  min-width: 250px;
+}
+
+.lista-dados .valores {
+  min-width: 250px;
+  text-align: end;
 }
 
 label {
