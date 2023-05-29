@@ -15,6 +15,7 @@ export default class BuscaProdutoPedido {
     if (this.inputChassi.value != '') {
       this.atualizarURLAPI()
       this.fazerFetchURL()
+      this.inputQtd.focus()
     } else
         alert('PREENCHA O CHASSI DO CARRO!')
   }

@@ -1,6 +1,7 @@
 import CalculaPrecoVenda from "./calculaPrecoVenda.js"
+import CancelaPedido from "./cancelaPedido.js"
 
-export default class AdidionaItem {
+export default class FechamentoPedido {
   constructor() {
     this.inputChassi = document.querySelector('#chassi')
     this.inputProduto = document.querySelector('#produto')
@@ -10,6 +11,8 @@ export default class AdidionaItem {
     this.tabelaItens = document.querySelector('.tabela-itens')
     this.tbodyTabelaItens = this.tabelaItens.querySelector('tbody')
     this.arrayItens = []
+
+    const cancelaPedido = new CancelaPedido(this.arrayItens)
 
     this.handleClick = this.handleClick.bind(this)
     this.init()
@@ -57,6 +60,7 @@ export default class AdidionaItem {
 
   preencherTabela() {
     const tr = document.createElement('tr')
+    tr.classList.add('tr')
     const propriedades = ['produto', 'quantidade', 'preco', 'subtotal']
     const ultimaPosArrayItens = this.arrayItens.length - 1
 
