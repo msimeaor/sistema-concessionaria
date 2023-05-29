@@ -78,7 +78,7 @@ label {
 }
 
 .tabela-itens th {
-  min-width: 135px;
+  width: 100%;
 }
 
 .tabela-itens td {

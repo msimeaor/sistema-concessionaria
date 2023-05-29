@@ -1,6 +1,6 @@
 import BuscaClientePedido from "./jsPedido/buscaClientePedido.js";
 import BuscaProdutoPedido from "./jsPedido/buscaProdutoPedido.js";
-import AdicionaItem from "./jsPedido/adicionaItem.js";
+import FechamentoPedido from "./jsPedido/fechamentoPedido.js";
 
 function fazerFetchURL(dir, metodoEndpoint, Classe) {
   fetch(dir)
@@ -13,4 +13,4 @@ function fazerFetchURL(dir, metodoEndpoint, Classe) {
 
 fazerFetchURL('/projeto/json/clienteAPI.json', 'getByCpf', BuscaClientePedido)
 fazerFetchURL('/projeto/json/produtoAPI.json', 'getByChassi', BuscaProdutoPedido)
-const adicionaItem = new AdicionaItem()
+const fechamentoPedido = new FechamentoPedido()
