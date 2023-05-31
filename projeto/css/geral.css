@@ -13,7 +13,7 @@ body {
   border: 3px solid #f8f9fa;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container-corpo {
     margin-left: 0px;
     margin-right: 0px;
@@ -22,6 +22,11 @@ body {
 
   .lista-dados .valores {
     text-align: left !important;
+  }
+
+  .nome-tela {
+    max-width: none !important;
+    margin-top: 1.5rem;
   }
 }
 
@@ -103,4 +108,25 @@ label {
 .container-conteudo {
   max-width: 1200px;
   margin: auto;
+}
+
+.nome-tela {
+  display: block;
+  max-width: 250px;
+  font-size: 1.4rem;
+  text-align: end;
+}
+
+.menu-container {
+  justify-content: space-between;
+}
+
+.container-titulo {
+  position: fixed;
+  top: 0;
+}
+
+.container-corpo-index {
+  width: 100vw;
+  height: 100vh;
 }
