@@ -1,5 +1,5 @@
-import CalculaPrecoVenda from "./calculaPrecoVenda.js"
-import CancelaPedido from "./cancelaPedido.js"
+import CalculaPrecoVenda from './calculaPrecoVenda.js'
+import CancelaPedido from './cancelaPedido.js'
 
 export default class FechamentoPedido {
   constructor() {
@@ -8,13 +8,15 @@ export default class FechamentoPedido {
     this.inputPreco = document.querySelector('#preco')
     this.inputQuantidade = document.querySelector('#qtd')
     this.btnAdicionaItem = document.querySelector('.adiciona-item')
+    this.btnSalvaPedido = document.querySelector('.salva-pedido')
     this.tabelaItens = document.querySelector('.tabela-itens')
     this.tbodyTabelaItens = this.tabelaItens.querySelector('tbody')
     this.arrayItens = []
 
-    const cancelaPedido = new CancelaPedido(this.arrayItens)
+    this.cancelaPedido = new CancelaPedido(this.arrayItens)
 
     this.handleClick = this.handleClick.bind(this)
+    this.handleSalvaPedido = this.handleSalvaPedido.bind(this)
     this.init()
   }
 
@@ -69,23 +71,24 @@ export default class FechamentoPedido {
       const propriedade = propriedades[i]
 
       if (propriedade === 'subtotal') {
-        const subtotal = this.formatarSubtotal(this.arrayItens[ultimaPosArrayItens][propriedade])
-        td.innerText = subtotal
+
+        const calcularSubTotal = (subtotalNumero) => {
+          return subtotalNumero
+            .toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
+        }
+        td.innerText = calcularSubTotal(this.arrayItens[ultimaPosArrayItens][propriedade])
+      
       } else {
         td.innerText = this.arrayItens[ultimaPosArrayItens][propriedade]
       } 
       
       tr.appendChild(td)
     }
-
+    
     this.tbodyTabelaItens.appendChild(tr)
-    const calcularPrecoVenda = new CalculaPrecoVenda(this.arrayItens)
+    
+    const calculaPrecoVenda = new CalculaPrecoVenda(this.arrayItens)
     this.limparDadosProduto()
-  }
-
-  formatarSubtotal(subtotalFloat) {
-    return subtotalFloat
-      .toLocaleString('PT-BR', {style: 'currency', currency: 'BRL'})
   }
 
   limparDadosProduto() {
@@ -96,8 +99,15 @@ export default class FechamentoPedido {
     this.inputQuantidade.value = ''
   }
 
+  handleSalvaPedido() {
+    this.arrayItens = []
+    this.cancelaPedido.removerEventos()
+    this.cancelaPedido = new CancelaPedido(this.arrayItens)
+  }
+
   adcEventos() {
     this.btnAdicionaItem.addEventListener('click', this.handleClick)
+    this.btnSalvaPedido.addEventListener('click', this.handleSalvaPedido)
   }
 
   init() {

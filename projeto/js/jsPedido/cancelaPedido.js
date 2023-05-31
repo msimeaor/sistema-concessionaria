@@ -8,6 +8,7 @@ export default class CancelaPedido {
 
     this.handleCancelaPedido = this.handleCancelaPedido.bind(this)
     this.handleCancelaProduto = this.handleCancelaProduto.bind(this)
+
     this.init()
   }
 
@@ -32,9 +33,9 @@ export default class CancelaPedido {
       const ultimaPosArray = this.arrayItens.length - 1
       this.arrayItens.splice(ultimaPosArray, 1)
       
-      this.calcularPrecoFinal()
       this.ultimoTrTbody = this.tbody.lastChild
       this.removerUltimoRegistroTabela()
+      this.calcularPrecoFinal()
     }
   }
 
@@ -72,10 +73,13 @@ export default class CancelaPedido {
     this.btnCancelaProduto.addEventListener('click', this.handleCancelaProduto)
   }
 
+  removerEventos() {
+    this.btnCancelaPedido.removeEventListener('click', this.handleCancelaPedido)
+    this.btnCancelaProduto.removeEventListener('click', this.handleCancelaProduto)
+  }
+
   init() {
     this.adcEventos()
   }
 
 }
-
-// FALTA APAGAR OS REGISTROS DA TABELA QUANDO CANCELADO O PEDIDO OU PRODUTO E ATUALIZAR O PREÇO TOTAL.

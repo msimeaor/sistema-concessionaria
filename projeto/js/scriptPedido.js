@@ -1,6 +1,7 @@
 import BuscaClientePedido from "./jsPedido/buscaClientePedido.js";
 import BuscaProdutoPedido from "./jsPedido/buscaProdutoPedido.js";
 import FechamentoPedido from "./jsPedido/fechamentoPedido.js";
+import SalvaPedido from "./jsPedido/salvaPedido.js";
 
 function fazerFetchURL(dir, metodoEndpoint, Classe) {
   fetch(dir)
@@ -14,3 +15,4 @@ function fazerFetchURL(dir, metodoEndpoint, Classe) {
 fazerFetchURL('/projeto/json/clienteAPI.json', 'getByCpf', BuscaClientePedido)
 fazerFetchURL('/projeto/json/produtoAPI.json', 'getByChassi', BuscaProdutoPedido)
 const fechamentoPedido = new FechamentoPedido()
+fazerFetchURL('/projeto/json/pedidoAPI.json', 'save', SalvaPedido)
