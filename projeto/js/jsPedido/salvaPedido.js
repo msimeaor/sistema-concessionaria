@@ -51,16 +51,16 @@ export default class SalvaPedido {
       body: JSON.stringify(this.objPedido)
     })
     .then(response => {
-      if (response.status === 409) {
-        alert('ESTE PEDIDO JÁ ESTÁ REGISTRADO!')
+      if (response.status === 400) {
+        alert('ESTOQUE INSUFICIENTE!')
         return response.json()
       } else {
-        alert('PEDIDO CADASTRADO COM SUCESSO')
+        alert('PEDIDO CADASTRADO COM SUCESSO!')
         return response.json()
       }
     })
     .then(pedido => {
-      console.log(pedido['pedido']);
+      console.log(pedido);
     })
     .finally(this.limparDadosTela())
   }
