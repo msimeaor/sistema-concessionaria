@@ -82,7 +82,6 @@ export default class BuscaCliente {
     .then(cliente => {
       this.preencherListaCliente(cliente)
     })
-
   }
 
   preencherListaCliente(cliente) {
