@@ -120,13 +120,3 @@ label {
 .menu-container {
   justify-content: space-between;
 }
-
-.container-titulo {
-  position: fixed;
-  top: 0;
-}
-
-.container-corpo-index {
-  width: 100vw;
-  height: 100vh;
-}
